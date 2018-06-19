@@ -1,0 +1,33 @@
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+ 
+<p>
+  <strong>Blog:</strong>
+  <%= @article.text %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <% @article.pictures.each do |pic| %>
+  <%= image_tag(pic.image.url(:thumb)) %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @article.user.email %>
+</p>
+
+<div id='delete_comment'>
+  <h2>Comments</h2>
+  <%= render @article.comments %>
+</div>
+
+<div id='create_comment'>
+  <h2>Add a comment:</h2>
+  <%= render 'comments/form' %>
+</div>
+<%= link_to 'Edit', edit_article_path %>
+<%= link_to 'back', articles_path %>

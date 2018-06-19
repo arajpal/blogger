@@ -1,0 +1,19 @@
+<%= form_with(model: [ @article, @article.comments.build ], local:true) do |form| %>
+  <p>
+    <%= form.label :comment %><br>
+    <%= form.text_area :body %>
+  </p>
+
+<!--   <p>
+    <%= form.label :image %><br>
+    <%= form.fields_for :pictures do |i| %>
+      <%= i.label "Image" %>
+      <%= i.file_field :image %>
+    <% end %>
+  </p>
+ -->
+  <p>
+    <%= form.submit %>
+  </p>
+
+  <% end %>

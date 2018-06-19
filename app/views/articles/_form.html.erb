@@ -1,0 +1,32 @@
+<%= form_with model: @article, url: articles_path, local: true do |form| %>
+
+  <% render 'errors' %>
+  <div class="col-md-4"></div>     
+  <div class="col-md-4">
+    <p>
+      <%= form.label :title %><br>
+      <%= form.text_field :title %>
+    </p>
+
+    <p>
+      <%= form.label :text %><br>
+      <%= form.text_area :text %>
+    </p>
+
+    <p><strong>Images : </strong></p>
+    <div id="pictures">
+      <%= form.fields_for :pictures do |picture| %>
+        <%= render 'picture_fields', f: picture %>
+        <% end %>
+
+      <div class="links">
+        <%= link_to_add_association 'add picture', form, :pictures %>
+      </div>
+    </div>
+
+    <p>
+    <%= form.submit %>
+    </p>
+  </div>
+
+<% end %>

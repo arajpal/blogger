@@ -1,0 +1,44 @@
+<h1>Edit Blog</h1>
+<%= form_with(model: @article, local: true) do |form| %>
+
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@article.errors.count, "error") %> prohibited this blog from being saved:
+      </h2>
+      <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :blog %>
+    <%= form.text_field :text %>
+  </p>
+
+  <p>
+    <%= form.label :image %><br>
+    <%= form.file_field :image %>
+    <% if form.object.pictures.each do |pic| %>
+      <%= image_tag(pic.image.url) %>
+      <%= form.label :remove_image %>
+      <%= form.check_box :remove_image %>
+      <% end %>
+    <% end %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+  <% end %>
+
+  <%= link_to 'back', articles_path %>
