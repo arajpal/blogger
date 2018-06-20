@@ -24,6 +24,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :email_confirmation %><br />
+    <%= f.email_field :uid, autofocus: true, autocomplete: "provider" %>
+  </div>
+
+  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
